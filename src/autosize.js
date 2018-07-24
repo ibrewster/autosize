@@ -161,11 +161,15 @@ function assign(ta) {
 			}
 		}
 	}
-
+	
+	var resizeTimer;
 	const pageResize = () => {
-		if (ta.clientWidth !== clientWidth) {
-			update();
-		}
+		clearTimeout(resizeTimer);
+		resizeTimer=setTimeout(function(){
+			if (ta.clientWidth !== clientWidth) {
+				update();
+			}
+		},250);
 	};
 
 	const destroy = (style => {
